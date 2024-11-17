@@ -5,18 +5,25 @@
     <h1>Chat</h1>
   </div>
 
-  <!-- Contenedor de los mensajes -->
+  <div *ngFor="let data of messages" [ngClass]="{'message-receive': data.type === 'received', 'message-send': data.type === 'sent'}">
+    <span class="message-text">{{ data.text }}</span>
+    <span class="message-date">{{ data.date | date:'shortDate' }}</span> <!-- Muestra solo la fecha -->
+  </div>
+
+  <!-- Contenedor de los mensajes 
   <div class="chat-messages">
     <div *ngFor="let data of messages"[ngClass]="{'message-receive': data.type === 'received', 'message-send': data.type === 'sent'}">
       {{ data.text }}
     </div>
-  </div>
+  </div>-->
 
   <!-- Barra de entrada de texto -->
   <div class="chat-input">
     <input [(ngModel)]="message" (keydown.enter)="sendMessage()" placeholder="Type your message..." />
     <button (click)="sendMessage()">Send</button>
   </div>
+
+
 
 </div>
 
